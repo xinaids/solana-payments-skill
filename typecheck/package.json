@@ -1,17 +1,5 @@
 {
   "name": "solana-payments-skill-typecheck",
   "private": true,
-  "version": "1.0.0",
-  "dependencies": {
-    "@solana-program/memo": "^0.11.2",
-    "@solana-program/token": "^0.14.0",
-    "@solana-program/token-2022": "^0.12.0",
-    "@solana/kit": "^6.10.0",
-    "@solana/kora": "^0.2.1",
-    "@solana/pay": "^1.0.20",
-    "@solana/spl-token": "^0.4.14",
-    "@solana/web3.js": "^1.98.4",
-    "@types/node": "^26.0.0",
-    "typescript": "^6.0.3"
-  }
+  "version": "1.0.0"
 }

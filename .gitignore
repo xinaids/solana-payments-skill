@@ -7,5 +7,3 @@ dist/
 target/
 .anchor/
 test-ledger/
-typecheck/node_modules/
-typecheck/package-lock.json
