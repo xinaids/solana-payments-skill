@@ -51,7 +51,8 @@ maintained paymaster like this rather than rolling your own signer service.
 import { KoraClient } from '@solana/kora';
 
 const kora = new KoraClient({ rpcUrl: process.env.KORA_RPC_URL! });
-const signed = await kora.signTransaction({ transaction }); // Kora signs as fee payer
+// `transaction` is the base64-encoded serialized transaction (string), not a tx object.
+const signed = await kora.signTransaction({ transaction: base64Transaction });
 ```
 
 ## Token-2022 Note

@@ -171,6 +171,38 @@ take this as the `commitment` option — not `finality`.
 - **Don't** reuse a single recipient ATA without references and try to match by amount —
   two orders for the same price become indistinguishable. References exist for this reason.
 
+## Real-Time Alternative: `watchReference`
+
+If 1–2 s polling latency is too slow, `@solana/pay` also exports `watchReference` — a
+WebSocket-subscription version of `findReference` that resolves the moment a matching
+transaction lands, instead of waiting for the next poll tick:
+
+```ts
+import { createSolanaRpcSubscriptions, address } from '@solana/kit';
+import { watchReference, FindReferenceError } from '@solana/pay';
+
+const rpcSubscriptions = createSolanaRpcSubscriptions(process.env.RPC_WS_URL!); // wss:// URL
+
+async function watchForPayment(reference: string) {
+  const controller = new AbortController();
+  try {
+    return await watchReference(rpcSubscriptions, address(reference), {
+      commitment: 'confirmed',
+      abortSignal: controller.signal,
+    });
+  } catch (err) {
+    if (err instanceof FindReferenceError) return null; // aborted before a match
+    throw err;
+  }
+}
+```
+
+Still **always** run `validateTransfer` on the returned signature before fulfilling — a
+matched reference is not yet a *validated* payment ([the verification path](#the-verification-path)
+above). Use `watchReference` to *detect* faster; keep `findReference`+polling as the
+TTL-bounded backstop in case the WebSocket connection drops (see
+[merchant-server.md](merchant-server.md)).
+
 ## Test This Path First
 
 Your test suite should include the negative cases, not just the happy path:

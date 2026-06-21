@@ -78,10 +78,23 @@ you **cannot** validate an exact amount — decide your policy:
 
 ## Parsing an Incoming URL (Wallet / Client Side)
 
+`parseURL` returns a discriminated union — `TransactionRequestURL | TransferRequestURL` —
+not a single flat shape. Narrow it before destructuring (the type-checker will reject
+direct field access otherwise):
+
 ```ts
 import { parseURL } from '@solana/pay';
 
-const { recipient, amount, splToken, reference, label, message, memo } = parseURL(url);
+const parsed = parseURL(url);
+if ('recipient' in parsed) {
+  // TransferRequestURL — fixed-or-open-amount, fully self-contained
+  const { recipient, amount, splToken, reference, label, message, memo } = parsed;
+  // ...
+} else {
+  // TransactionRequestURL — server endpoint the wallet will POST to
+  const { link, label, message } = parsed;
+  // ...
+}
 ```
 
 ## When NOT to Use Transfer Requests

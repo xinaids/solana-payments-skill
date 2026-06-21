@@ -30,6 +30,11 @@ Persist `reference`, `recipient`, `amount`, `splToken`, `signature`, timestamps.
 Run **both**. Webhooks are fast but can be missed; polling is the reliable backstop. Make
 fulfillment idempotent so both firing is harmless ([verification.md](verification.md)).
 
+> A third option for lower latency than HTTP polling: `@solana/pay`'s `watchReference` opens
+> a WebSocket subscription that resolves the moment a matching transaction lands — see
+> [verification.md](verification.md#real-time-alternative-watchreference). Still keep
+> polling as the backstop in case the socket drops.
+
 ### Webhooks (fast path) — Helius
 Register a webhook on the merchant address (or on the reference, depending on provider
 capabilities) to get pushed transaction events. On receipt: run the **same**
