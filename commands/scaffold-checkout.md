@@ -30,4 +30,6 @@ never the create-URL path alone.
 ## Guardrails
 - Persist the reference **before** showing the URL.
 - Amounts in UI units for the URL; base units for instructions; `transferChecked`.
-- Isolate `@solana/pay` behind one boundary module if the app is `@solana/kit` ([kit-interop.md](../skill/kit-interop.md)).
+- If the app still uses `@solana/web3.js` elsewhere, isolate that legacy code at the call
+  sites that touch `@solana/pay` — see [kit-interop.md](../skill/kit-interop.md). Pure
+  `@solana/kit` apps: no boundary needed, `@solana/pay` is already kit-native.

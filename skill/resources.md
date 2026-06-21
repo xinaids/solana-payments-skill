@@ -29,9 +29,9 @@ integration time — this space moves fast.
 - Ramp providers verified for Solana + Pix (mid-2026): Ramp Network, Transak, Beam,
   Lightspark Grid, Bridge.xyz — evaluate per region; do not hardcode one — keep behind a
   provider-agnostic interface
-- Brazil BCB Resolutions 519/520/521 (SPSAV framework, Nov 10 2025 / force Feb 2 2026):
-  any Brazil-facing ramp must be a licensed SPSAV or partner with one — verify with the
-  provider directly, this is mid-rollout through 2026
+- Brazil BCB Resolutions 519/520/521 (SPSAV framework): https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?tipo=Resolu%C3%A7%C3%A3o%20BCB&numero=520
+  — confirm against the official Diário Oficial / BCB normativo text, not this skill, before
+  relying on dates/thresholds for a production integration
 
 ## Infra (delegate to kit skills)
 - Helius (RPC, webhooks, DAS): via the kit's `helius` skill
