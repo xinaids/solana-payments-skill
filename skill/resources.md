@@ -24,8 +24,8 @@ integration time — this space moves fast.
 ## Fiat Rails
 - Solana Developer Platform (SDP): https://solana.com/solutions/sdp
 - SDP launch context: https://solana.com/news/solana-developer-platform
-- Circle CCTP (cross-chain USDC) — V1 deprecated, phase-out begins July 31, 2026; confirm
-  current version at integration time
+- Circle CCTP (cross-chain USDC) — V1 deprecated, V2 is current; confirm active cutoff date
+  at https://developers.circle.com/stablecoins/cctp before integrating
 - Ramp providers verified for Solana + Pix (mid-2026): Ramp Network, Transak, Beam,
   Lightspark Grid, Bridge.xyz — evaluate per region; do not hardcode one — keep behind a
   provider-agnostic interface

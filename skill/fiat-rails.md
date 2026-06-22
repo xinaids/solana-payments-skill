@@ -121,7 +121,9 @@ provider compliance postures are still shifting through 2026.
 ## Cross-Chain Note
 
 If you accept USDC on multiple chains and consolidate on Solana: Circle's **CCTP V1 is
-deprecated, with phase-out beginning July 31, 2026**. Any cross-chain USDC integration still
+deprecated** — V2 is the current version. The phase-out timeline is subject to change;
+confirm the current cutoff date at https://developers.circle.com/stablecoins/cctp before
+integrating. Any cross-chain USDC integration still
 on V1 needs to migrate to the current CCTP version before that date. Confirm the active
 version at integration time — this is a hard deadline, not a soft recommendation.
 
@@ -142,4 +144,4 @@ version at integration time — this is a hard deadline, not a soft recommendati
 - [ ] `finalized` before irreversible fiat payout
 - [ ] KYC tier and limits understood for target users
 - [ ] tax/declaration guidance surfaced to the user (not assumed away)
-- [ ] if bridging cross-chain USDC, confirmed on current CCTP version (V1 deprecated, phase-out from Jul 31, 2026)
+- [ ] if bridging cross-chain USDC, confirmed on current CCTP version (V1 deprecated; verify cutoff at developers.circle.com/stablecoins/cctp)
